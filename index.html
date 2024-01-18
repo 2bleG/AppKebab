@@ -8,26 +8,35 @@
 </head>
 <body>
     <div id="app">
-        <h1>Kebab App</h1>
-        <div>
-            <h2>Ajouter une recette</h2>
-            <input type="text" id="recipeInput" placeholder="Nom de la recette">
-            <input type="text" id="ingredientsInput" placeholder="Ingrédients">
-            <button onclick="addRecipe()">Ajouter</button>
+        <div id="title">
+            <img src="imgs/kebab.png" alt="logo doner">
+            <h1>Kebab App</h1>
         </div>
+        <details>
+            <summary><h2>Ajouter une recette</h2></summary>
+            <div>
+                <label for="recipeInput">Nom de la recette:</label>
+                <input type="text" id="recipeInput" placeholder="Nom de la recette" required>
+                <label for="ingredientsInput">Ingrédients:</label>
+                <input type="text" id="ingredientsInput" placeholder="Ingrédients" required>
+                <button onclick="addRecipe()">Ajouter</button>
+            </div>
+        </details>
         
-        <div>
-            <h2>Liste des recettes</h2>
+        <details>
+            <summary><h2>Liste des recettes</h2></summary>
             <ul id="recipeList"></ul>
-        </div>
-        <div>
-            <h2>Nos Plats</h2>
+        </details>
+
+        <details>
+            <summary><h2>Nos Plats</h2></summary>
             <ul id="ourPlatesList"></ul>
-        </div>
-        <div>
-            <h2>Liste des commandes</h2>
+        </details>
+
+        <details>
+            <summary><h2>Liste des commandes</h2></summary>
             <ul id="commandsList"></ul>
-        </div>
+        </details>
     </div>
     <script src="app.js"></script>
 </body>

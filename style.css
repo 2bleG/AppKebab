@@ -1,21 +1,162 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ff9900;
+    background-color: #e48900;
 }
 
 #app {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid #ff9900;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 15%;
+}
+
+h1 {
+    width: 50%;
+    right: 0;
 }
 
 h1, h2 {
     text-align: center;
+    color: #333;
 }
 
-input, button {
+div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
     margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #e68a00;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+#commandsList li {
+    position: relative;
+}
+
+#commandsList span {
+    position: relative;
+    justify-content: center;
+    font-size: 2rem;
+    color: #db0909;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#ourPlatesList select {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+#ourPlatesList select:hover {
+    border-color: #666;
+}
+
+#ourPlatesList select:focus {
+    outline: none;
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+#ourPlatesList select option {
+    background-color: #fff;
+    color: #333;
+}
+
+details {
+    margin-bottom: 20px;
+}
+
+details summary {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+}
+
+details summary:hover {
+    background-color: #e68a00;
+}
+
+details div, details ul {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary {
+    list-style: none;
 }

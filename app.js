@@ -7,12 +7,14 @@ function addRecipe() {
     const recipeName = recipeInput.value.trim();
     const ingredients = ingredientsInput.value.trim();
 
-    if (recipeName !== '') {
+    if (recipeName !== '' && ingredients !== '') {
         const recipeId = Date.now().toString();
         recipes.push({ name: recipeName, ingredients, id: recipeId });
         recipeInput.value = '';
         ingredientsInput.value = '';
         renderRecipes();
+    } else {
+        alert('Veuillez saisir le nom de la recette et les ingrédients.');
     }
 }
 
@@ -30,6 +32,13 @@ function deleteRecipe(recipeId) {
 
 async function placeOrder(recipeId) {
     const selectedRecipe = recipes.find(recipe => recipe.id === recipeId);
+    const saucesDropdown = document.getElementById(`sauces-${recipeId}`);
+    const selectedSauce = saucesDropdown.value;
+
+    if (selectedSauce === '') {
+        alert('Veuillez sélectionner une sauce avant de commander.');
+        return;
+    }
 
     try {
         const orderDate = await getParisTime();
@@ -38,6 +47,7 @@ async function placeOrder(recipeId) {
         commands.push({
             recipe: selectedRecipe,
             date: formattedOrderDate,
+            sauce: selectedSauce,
         });
 
         commands.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -77,11 +87,35 @@ function renderOurPlatesList() {
 
     recipes.forEach((recipe) => {
         const li = createListItem(`${recipe.name} - Ingrédients: ${recipe.ingredients}`);
+        const saucesDropdown = createSaucesDropdown(recipe.id);
         const orderButton = createButton('Commander', () => placeOrder(recipe.id));
-
+        
+        li.appendChild(saucesDropdown);
         li.appendChild(orderButton);
         ourPlatesList.appendChild(li);
     });
+}
+
+function createSaucesDropdown(recipeId) {
+    const saucesDropdown = document.createElement('select');
+    saucesDropdown.id = `sauces-${recipeId}`;
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Sélectionner une sauce';
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    saucesDropdown.appendChild(defaultOption);
+
+    const sauces = ['Ketchup', 'Algérienne', 'Blanche'];
+    sauces.forEach((sauce) => {
+        const option = document.createElement('option');
+        option.value = sauce;
+        option.text = sauce;
+        saucesDropdown.appendChild(option);
+    });
+
+    return saucesDropdown;
 }
 
 function renderCommandsList() {
@@ -99,7 +133,6 @@ function renderCommandsList() {
         commandsList.appendChild(validateButton);
     });
 }
-
 
 function validateCommand(commandIndex) {
     commands.splice(commandIndex, 1);
@@ -123,7 +156,7 @@ function createButton(text, clickHandler) {
 function formatCommandText(command) {
     const date = new Date(command.date);
     const formattedDate = `${date.getHours()}:${padZero(date.getMinutes())}:${padZero(date.getSeconds())}`;
-    return `${command.recipe.name} - ${formattedDate}`;
+    return `${command.recipe.name} - ${formattedDate} - Sauce: ${command.sauce}`;
 }
 
 function padZero(number) {
