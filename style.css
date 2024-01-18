@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ff9900;
+}
+
+#app {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ff9900;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+input, button {
+    margin-bottom: 10px;
+}

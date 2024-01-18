@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kebab App</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Kebab App</h1>
+        <div>
+            <h2>Ajouter une recette</h2>
+            <input type="text" id="recipeInput" placeholder="Nom de la recette">
+            <input type="text" id="ingredientsInput" placeholder="Ingrédients">
+            <button onclick="addRecipe()">Ajouter</button>
+        </div>
+        
+        <div>
+            <h2>Liste des recettes</h2>
+            <ul id="recipeList"></ul>
+        </div>
+        <div>
+            <h2>Nos Plats</h2>
+            <ul id="ourPlatesList"></ul>
+        </div>
+        <div>
+            <h2>Liste des commandes</h2>
+            <ul id="commandsList"></ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
